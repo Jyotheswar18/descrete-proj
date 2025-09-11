@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Scheduler</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Graph Coloring-Based Exam Scheduler</h1>
+        <p>Click the button below to generate a conflict-free exam timetable.</p>
+        <form action="/generate" method="POST">
+            <button type="submit" class="btn">Generate Timetable</button>
+        </form>
+    </div>
+</body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Schedule Visualization</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Exam Schedule Graph Coloring</h1>
+        <div class="graph-image">
+            <!-- The graph image will be displayed here -->
+            <img src="../output/graph.png" alt="Exam Schedule Graph" />
+        </div>
+        <div class="info">
+            <h2>Legend</h2>
+            <ul>
+                <li><span class="legend-color slot1"></span> Slot 1</li>
+                <li><span class="legend-color slot2"></span> Slot 2</li>
+                <li><span class="legend-color slot3"></span> Slot 3</li>
+                <!-- Add more slots as needed -->
+            </ul>
+        </div>
+        <div class="desc">
+            <h2>Project Description</h2>
+            <p>This visualization shows the optimal scheduling of exams using graph coloring. Each node is a course, and edges indicate shared students. Colors represent time slots, ensuring no student has overlapping exams.</p>
+        </div>
+    </div>
+</body>
+</html>

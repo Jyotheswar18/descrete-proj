@@ -1,0 +1,140 @@
+body {
+    background: #f4f6fb;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    max-width: 800px;
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    padding: 32px 40px;
+}
+h1 {
+    text-align: center;
+    color: #2d3a4a;
+    margin-bottom: 32px;
+}
+.graph-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 32px;
+}
+.graph-image img {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+}
+.info {
+    margin-bottom: 24px;
+}
+.info h2 {
+    color: #3a4d6a;
+    font-size: 1.2em;
+    margin-bottom: 12px;
+}
+.info ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 18px;
+}
+.legend-color {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    margin-right: 8px;
+    vertical-align: middle;
+    border: 2px solid #e0e0e0;
+}
+.slot1 { background: #b3e2cd; }
+.slot2 { background: #fdcdac; }
+.slot3 { background: #cbd5e8; }
+.desc {
+    background: #f7f9fc;
+    border-radius: 8px;
+    padding: 18px 22px;
+    color: #2d3a4a;
+    font-size: 1em;
+    margin-top: 18px;
+}
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f7f9fc;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 80%;
+    max-width: 900px;
+    background: #fff;
+    margin: 40px auto;
+    padding: 20px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+p {
+    color: #555;
+}
+
+.btn {
+    background-color: #0078d7;
+    color: white;
+    padding: 10px 25px;
+    margin: 10px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 16px;
+    transition: 0.3s ease-in-out;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #005bb5;
+}
+
+.btn.download {
+    background-color: #28a745;
+}
+
+.btn.download:hover {
+    background-color: #1e7e34;
+}
+
+.table-container {
+    margin-top: 20px;
+    overflow-x: auto;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: auto;
+}
+
+table th, table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+table th {
+    background-color: #0078d7;
+    color: white;
+}
