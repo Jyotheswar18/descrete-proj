@@ -2,16 +2,105 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generated Timetable</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Student Timetable</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #f6f8fa; margin: 0; }
+        .main { max-width: 600px; margin: 40px auto; background: #fff; border-radius: 12px; box-shadow: 0 4px 24px rgba(0,0,0,0.08); padding: 32px 40px; }
+        h2 { text-align: center; color: #1976d2; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 32px; background: #fafafa; border-radius: 8px; overflow: hidden; }
+        th, td { border: none; padding: 12px 16px; text-align: left; }
+        th { background: #1976d2; color: #fff; font-size: 1.1rem; font-weight: 600; }
+        td { font-size: 1rem; color: #333; }
+        tr:nth-child(even) { background: #e3f2fd; }
+        .graph-area { text-align: center; margin-top: 32px; }
+        img { border: 2px solid #1976d2; border-radius: 10px; box-shadow: 0 2px 8px #eee; }
+        .notfound { color: #c00; font-weight: bold; font-size: 1.2rem; margin: 24px 0; text-align: center; }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Generated Exam Timetable</h1>
-        <div class="table-container">
-            {{ tables|safe }}
-        </div>
+    <div class="main">
+        {% if table_type == 'slot' %}
+            <h3>Courses in this Slot</h3>
+            <table>
+                <tr><th>Course ID</th><th>Course Name</th></tr>
+                {% for row in courses_in_slot %}
+                    <tr>
+                        <td>{{ row.course_id }}</td>
+                        <td>{{ row.course_name }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+            <h3>Students Writing Exam in this Slot</h3>
+            <table>
+                <tr><th>Student ID</th><th>Student Name</th><th>Course ID</th></tr>
+                {% for row in students_in_slot %}
+                    <tr>
+                        <td>{{ row.student_id }}</td>
+                        <td>{{ row.student_name }}</td>
+                        <td>{{ row.course_id }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+            <div class="graph-area">
+                <img src="{{ url_for('static', filename=graph_image) }}" alt="Slot Graph" width="350">
+            </div>
+        {% elif timetable %}
+            {% if table_type == 'course_id' %}
+                <table>
+                    <tr><th>Student ID</th><th>Student Name</th><th>Course Name</th></tr>
+                    {% for row in timetable %}
+                        <tr>
+                            <td>{{ row.student_id }}</td>
+                            <td>{{ row.student_name }}</td>
+                            <td>{{ row.course_name }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            {% else %}
+                <table>
+                    <tr><th>Course ID</th><th>Course Name</th><th>Slot</th></tr>
+                    {% for row in timetable %}
+                        <tr>
+                            <td>{{ row.course_id }}</td>
+                            <td>{{ row.course_name }}</td>
+                            <td>{{ row.slot }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+                <div class="graph-area">
+                    <img src="{{ url_for('static', filename=graph_image) }}" alt="Graph" width="350">
+                </div>
+            {% endif %}
+        {% else %}
+            <div style="text-align:center; margin-top: 40px;">
+                <a href="/download" class="btn" style="display:inline-block; background:#1976d2; color:#fff; padding:14px 36px; border-radius:8px; font-size:1.1rem; font-weight:600; text-decoration:none; box-shadow:0 2px 8px #eee;">Download CSV</a>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
+    <div class="sidebar right"></div>
+    <div class="sidebar top"></div>
+    <div class="sidebar bottom"></div>
+    <div class="dashboard-card">
+        <div class="dashboard-title">Timetable for {{ student_name }}</div>
+        {% if courses %}
+            <table>
+                <tr><th>Course</th><th>Time Slot</th></tr>
+                {% for row in courses %}
+                    <tr>
+                        <td>{{ row['course_id'] }}</td>
+                        <td>{{ row['time_slot'] }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+            <div class="graph-area">
+                <h3 style="font-size:1.3rem;font-weight:600;color:#1976d2;margin-bottom:18px;">Exam Conflict Graph</h3>
+                <img src="{{ url_for('static', filename=graph) }}" alt="Graph" width="350">
+            </div>
+        {% else %}
+            <p class="notfound">No timetable found for this student.</p>
+        {% endif %}
         <div class="btn-container">
             <a href="/" class="btn">Back</a>
             <a href="/download" class="btn download">Download CSV</a>

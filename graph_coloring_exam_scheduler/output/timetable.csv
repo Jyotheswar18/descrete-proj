@@ -1,0 +1,13 @@
+course_id,time_slot,course_name
+CSE105,0,Computer Networks
+CSE107,0,Artificial Intelligence
+CSE101,0,Data Structures
+CSE104,0,Operating Systems
+CSE102,1,Algorithms
+CSE110,1,Cloud Computing
+CSE106,1,Software Engineering
+CSE108,1,Machine Learning
+CSE109,2,Cyber Security
+CSE112,2,Web Technologies
+CSE103,2,Database Systems
+CSE111,2,Compiler Design
